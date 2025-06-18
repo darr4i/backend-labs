@@ -1,0 +1,21 @@
+{{> header}}
+<h2>Weather App KPI</h2>
+<p>Select a city to view weather:</p>
+
+{{#each cities}}
+    <form action="/weather/{{this}}" method="get">
+        <button type="submit">{{this}}</button>
+    </form>
+{{/each}}
+
+{{#if weather}}
+    <h3>Погода в {{weather.name}}</h3>
+    <p>Температура: {{weather.main.temp}}°C</p>
+    <p>Опис: {{weather.weather.[0].description}}</p>
+{{/if}}
+
+{{#if error}}
+    <p style="color:red">{{error}}</p>
+{{/if}}
+
+{{> footer}}
