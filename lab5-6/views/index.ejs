@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Бібліотека</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>📚 Бібліотека</h1>
+
+  <a href="/api/books" class="button">Завантажити книги у форматі JSON</a>
+  <a href="/add" class="button">➕ Додати книгу</a>
+
+  <ul>
+    <% books.forEach(book => { %>
+      <li>
+        <h2><%= book.title %></h2>
+        <p><strong>Автор:</strong> <%= book.author %></p>
+        <p><strong>Рік видання:</strong> <%= book.year %></p>
+        <p><strong>Адреса автора:</strong> <%= book.author_address %></p>
+        <p><strong>Адреса видавництва:</strong> <%= book.publisher_address %></p>
+        <p><strong>Ціна:</strong> <%= book.price %> грн</p>
+        <p><strong>Книготорговельна фірма:</strong> <%= book.bookstore %></p>
+
+        <a href="/edit/<%= book._id %>" class="button">Редагувати</a>
+        <a href="/delete/<%= book._id %>" class="button" onclick="return confirm('Ви впевнені, що хочете видалити цю книгу?')">Видалити</a>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>
